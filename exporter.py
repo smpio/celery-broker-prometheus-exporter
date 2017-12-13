@@ -57,7 +57,7 @@ def get_handler_class(get_queues):
             self.end_headers()
 
             for q, length in get_queues().items():
-                self.wfile.write(b'celery_queue_length{queue=%b} %d\n' % (q.encode('utf-8'), length))
+                self.wfile.write(b'celery_queue_length{queue="%b"} %d\n' % (q.encode('utf-8'), length))
 
         def log_message(self, format, *args):
             return
